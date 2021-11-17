@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - LeftCube
+  - RightCube
+  - Green
+  - Red
+  - LevelComplete
+  - Coin
   layers:
   - Default
   - TransparentFX
