@@ -44,6 +44,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         pauseButton.onClick.AddListener(PauseGame);
         resumeButton.onClick.AddListener(ResumeGame);
         retryButton.onClick.AddListener(Restart);

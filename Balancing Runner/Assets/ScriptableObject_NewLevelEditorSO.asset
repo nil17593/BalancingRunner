@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 935e727a5ee02d249adecbc32b763d50, type: 3}
+  m_Name: ScriptableObject_NewLevelEditorSO
+  m_EditorClassIdentifier: 
+  LevelNumber: 1
+  difficultyLevel: 0
+  PlatForms:
+  - {fileID: 2678903465239626569, guid: 1421ae6c4178b1c4e934bad0c7c53d8f, type: 3}
+  - {fileID: 2678903465239626569, guid: 1421ae6c4178b1c4e934bad0c7c53d8f, type: 3}
+  Obstacles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

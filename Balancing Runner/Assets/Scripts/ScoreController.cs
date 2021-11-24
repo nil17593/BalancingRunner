@@ -26,7 +26,7 @@ public class ScoreController : MonoBehaviour
 
     private void Start()
     {
-        totalScore = 0;
+        totalScore = PlayerPrefs.GetInt("TotalScore", totalScore);
         RefreshUI();
     }
 
@@ -34,6 +34,7 @@ public class ScoreController : MonoBehaviour
     {
         totalScore += increament;
         RefreshUI();
+        PlayerPrefs.SetInt("TotalScore", totalScore);
     }
 
     private void RefreshUI()

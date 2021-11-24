@@ -17,21 +17,17 @@ public class RightCubeController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Red"))
+        if (other.GetComponent<RedCollectibleCubeController>()!=null)
         {
             Destroy(other.gameObject);
             StickController.StickInstance.RotateRight();
             IncreaseRightCount(increamentScore);
         }
-        else if (other.CompareTag("Green"))
+        else if (other.GetComponent<GreenCollectibleCubeController>() != null)
         {
-            Debug.Log(other.name);
             Destroy(other.gameObject);
             StickController.StickInstance.RotateLeft();
-            //if (totalScore > 1)
-            //{
-                DecreaseScore(decreamentScore);
-            //}
+            DecreaseScore(decreamentScore);
         }
     }
 
@@ -48,7 +44,7 @@ public class RightCubeController : MonoBehaviour
 
     private void DecreaseScore(int decreament)
     {
-        totalScore -= decreament;
-        RefreshRightUI();
+            totalScore -= decreament;
+            RefreshRightUI();
     }
 }

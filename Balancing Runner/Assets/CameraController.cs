@@ -16,11 +16,6 @@ public class CameraController : MonoBehaviour
     private Vector3 smoothPos;
 
 
-    private void Start()
-    {
-        //offset = transform.position + target.transform.position;
-    }
-
     private void FollowPlater()
     {
         if (MoveCamera == true)
@@ -29,7 +24,7 @@ public class CameraController : MonoBehaviour
             smoothPos = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
             transform.position = smoothPos;
         }
-        if(target.position.x>5.5f|| target.position.x < -5.5f)
+        if(target.position.x>5.5f || target.position.x < -5.5f)
         {
             targetPos = new Vector3(target.position.x, target.position.y + offset.y, target.position.z + offset.z);
             smoothPos = Vector3.Lerp(transform.position, targetPos, smoothSpeed);
