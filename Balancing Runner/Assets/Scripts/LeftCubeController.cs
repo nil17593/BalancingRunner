@@ -9,6 +9,7 @@ public class LeftCubeController : MonoBehaviour
     private int totalScore;
     [SerializeField] private int increamentScore;
     [SerializeField] private int decreamentScore;
+    public StickController stickController;
 
     private void Start()
     {
@@ -19,14 +20,16 @@ public class LeftCubeController : MonoBehaviour
     {
         if (other.GetComponent<GreenCollectibleCubeController>() != null)
         {
-            StickController.StickInstance.RotateLeft();
+            //StickController.StickInstance.RotateLeft();
+            stickController.RotateLeft();
             IncreaseLeftCount(increamentScore);
             Destroy(other.gameObject);
         }
         else if (other.GetComponent<RedCollectibleCubeController>() != null)
         {
             Destroy(other.gameObject);
-            StickController.StickInstance.RotateRight();
+            //StickController.StickInstance.RotateRight();
+            stickController.RotateRight();
             //if (totalScore > 1)
             //{
             DecreaseScore(decreamentScore);
@@ -47,8 +50,7 @@ public class LeftCubeController : MonoBehaviour
 
     private void DecreaseScore(int decreament)
     {
-            totalScore -= decreament;
-            RefreshLeftUI();
-
+        totalScore -= decreament;
+        RefreshLeftUI();
     }
 }

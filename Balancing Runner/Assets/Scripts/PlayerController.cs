@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 leftMov;
     private Vector3 rightMov;
     private Touch touch;
-    private bool isMove = true;
+    [SerializeField]private bool isSwipe = true;
     //private float timer = 10f;
     private float desiredLane = 1f;
     //public float laneDistance;
@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
     //forward movement 
     private void ForwardMovement()
     {
-        isMove = true;
         animator.SetBool("Run", true);
         forwardMov = speed * Time.fixedDeltaTime * transform.forward;
         playerRigidbody.MovePosition(playerRigidbody.position + forwardMov);
@@ -74,7 +73,7 @@ public class PlayerController : MonoBehaviour
     #region Swipe Controls
     public void SetSwipeHorizontal()
     {
-        if (SwipeManager.swipeLeft)// || Input.GetKey(KeyCode.A))
+        if (isSwipe && SwipeManager.swipeLeft || Input.GetKeyDown(KeyCode.A) && isSwipe)
         {
             desiredLane--;
             Debug.Log(desiredLane);
@@ -83,7 +82,7 @@ public class PlayerController : MonoBehaviour
                 desiredLane = 0f;
             }
         }
-        else if (SwipeManager.swipeRight)// || Input.GetKey(KeyCode.D))
+        else if (isSwipe && SwipeManager.swipeRight || Input.GetKeyDown(KeyCode.D) && isSwipe)
         {
             desiredLane++;
             Debug.Log(desiredLane);
@@ -127,8 +126,8 @@ public class PlayerController : MonoBehaviour
     {
         if (transform.position.x < -5.5f || transform.position.x > 5.4f)
         {
-            isMove = false;
-            Debug.Log(isMove);
+            isSwipe = false;
+            Debug.Log(isSwipe);
             UIManager.UIInstance.LoadDiePanel();
 
             animator.SetBool("Run", false);
@@ -146,7 +145,32 @@ public class PlayerController : MonoBehaviour
             gameObject.SetActive(false);
             UIManager.UIInstance.LoadLevelWinPanel();
         }
+        if (other.CompareTag("SwipeFalse"))
+        {
+            isSwipe = false;
+        }
+        if (other.CompareTag("SwipeTrue"))
+        {
+            isSwipe = true;
+        }
     }
+
+    //void OnCollisionEnter(Collision collider)
+    //{
+    //    if (collider.gameObject.tag =="InvisiblePlatforms")
+    //    {
+    //        Debug.Log(collider.gameObject.name);
+    //        //playerRigidbody.constraints = RigidbodyConstraints.FreezePositionX;
+    //        isSwipe = false;
+    //    }
+    //}
+
+    //void OnCollisionExit(Collision other)
+    //{
+    //    isSwipe = true;
+    //    print("No longer in contact with " + other.transform.name);
+    //}
+
 
     void DragInputs()
     {

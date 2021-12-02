@@ -9,6 +9,7 @@ public class RightCubeController : MonoBehaviour
     [SerializeField] private int increamentScore;
     [SerializeField] private int decreamentScore;
     private int totalScore;
+    public StickController stickController;
 
     private void Start()
     {
@@ -17,16 +18,18 @@ public class RightCubeController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<RedCollectibleCubeController>()!=null)
+        if (other.GetComponent<RedCollectibleCubeController>() != null)
         {
             Destroy(other.gameObject);
-            StickController.StickInstance.RotateRight();
+            //StickController.StickInstance.RotateRight();
+            stickController.RotateRight();
             IncreaseRightCount(increamentScore);
         }
         else if (other.GetComponent<GreenCollectibleCubeController>() != null)
         {
             Destroy(other.gameObject);
-            StickController.StickInstance.RotateLeft();
+            //StickController.StickInstance.RotateLeft();
+            stickController.RotateLeft();
             DecreaseScore(decreamentScore);
         }
     }

@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - LevelComplete
+  - InvisiblePlatforms
+  - SwipeTrue
+  - SwipeFalse
   layers:
   - Default
   - TransparentFX
